@@ -5,7 +5,6 @@ import collections
 import queue
 import requests
 import time
-
 from bs4 import BeautifulSoup
 from Graph import *
 url = 'https://gml.noaa.gov/aggi/aggi.html'
@@ -118,6 +117,13 @@ def query__builder_table(dbname, datatypes):
 response = requests.get(url)
 tb = pd.read_html(url)[1]
 print(tb)
+
+url = 'https://gml.noaa.gov/aggi/aggi.html'
+response = requests.get(url)
+tb = pd.read_html(url)[1]
+print(tb)
+
+
 '''used bs4 to get headers only'''
 soup = BeautifulSoup(response.content, 'html.parser')
 table = soup.find_all('table')[1]
@@ -181,8 +187,7 @@ def main():
     g = Graph()
     g.graph_plot(thread_result,headers, 'Year', 'Data')
 
-
-
+# print(headers)
 
 
 
